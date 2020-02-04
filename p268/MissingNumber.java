@@ -13,24 +13,32 @@ Note:
 Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
  * */package p268;
 
-import java.util.HashSet;
-
 public class MissingNumber {
 
+//	public int missingNumber(int[] nums) {
+//		HashSet<Integer> hs = new HashSet<>();
+//		int max = Integer.MIN_VALUE;
+//		for (int i : nums) {
+//			if (i > max) {
+//				max = i;
+//			}
+//			hs.add(i);
+//		}
+//		for (int i = 0; i <= max; i++) {
+//			if (!hs.contains(i)) {
+//				return i;
+//			}
+//		}
+//		return max + 1;
+//	}
+
 	public int missingNumber(int[] nums) {
-		HashSet<Integer> hs = new HashSet<>();
-		int max = Integer.MIN_VALUE;
+		int expected = nums.length * (nums.length + 1) / 2;
+		int sum = 0;
 		for (int i : nums) {
-			if (i > max) {
-				max = i;
-			}
-			hs.add(i);
+			sum += i;
 		}
-		for (int i = 0; i <= max; i++) {
-			if (!hs.contains(i)) {
-				return i;
-			}
-		}
-		return max + 1;
+		return expected - sum;
 	}
+
 }
